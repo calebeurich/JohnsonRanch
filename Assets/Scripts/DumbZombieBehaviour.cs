@@ -5,11 +5,12 @@ using UnityEngine;
 public class DumbZombieBehaviour : MonoBehaviour
 {
     public Transform target;
-    public float speed = 5f;
+    private float speed = 1f;
 
     void Update()
     {
 		float step = speed * Time.deltaTime;
 		transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+        transform.LookAt(target);
 	}
 }

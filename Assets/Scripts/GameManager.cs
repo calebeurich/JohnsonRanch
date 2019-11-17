@@ -42,5 +42,12 @@ public class GameManager : MonoBehaviour
     public void RemoveEnemy(GameObject deleteEnemy)
     {
         enemyPrefabs.Remove(deleteEnemy);
+        Destroy(deleteEnemy);
+    }
+
+    public int EnemyCount()
+    {
+        return enemyPrefabs.Count;
+
     }
 }
