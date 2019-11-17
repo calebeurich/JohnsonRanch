@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 4276011417338062}
   - component: {fileID: 95084859950611060}
   - component: {fileID: 114468287300669534}
+  - component: {fileID: 8821449733557539197}
   m_Layer: 0
   m_Name: grandpa
   m_TagString: Untagged
@@ -96,6 +97,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ca642625b449a4ca8b7963b51f6aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8821449733557539197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088609120909212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36ad3e05a6ac74661bbd9eae11ea5c0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  speed: 5
 --- !u!1 &1146530556475218
 GameObject:
   m_ObjectHideFlags: 0

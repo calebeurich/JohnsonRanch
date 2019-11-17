@@ -36,7 +36,7 @@ public class Shooting : MonoBehaviour
 
                 if (target.tag == "enemy") {
                     //also check if its too far away?
-                    GameManager.instance.RemoveEnemy(target);
+                    GameManager.instance.RemoveEnemy(target.gameObject);
                     //kill the enemy anamation
                 }
             }
