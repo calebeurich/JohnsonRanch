@@ -7,7 +7,8 @@ public class Shooting : MonoBehaviour
 {
     public GameObject firePoint;
     public GameObject bangParticles;
-    private void FixedUpdate()
+
+    private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
