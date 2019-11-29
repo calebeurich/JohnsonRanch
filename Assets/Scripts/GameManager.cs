@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance { get { return _instance; } }
 
     public WaveSpawner waveSpawner;
-
+    private int currentRound = 0;
     private List<GameObject> enemyPrefabs;
 
     //instance variable
@@ -28,9 +28,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(enemyPrefabs.Count == 0)
+        if(EnemyCount() == 0)
         {
             waveSpawner.SpawnNewWave();
+            currentRound++;
+            UIManager.instance.NextRound(currentRound);
         }
     }
 
