@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public static UIManager instance { get { return _instance; } }
 
     public TextMeshProUGUI roundText;
+    public TextMeshProUGUI remainingText;
 
     //instance variable
     private void Awake()
@@ -25,7 +26,11 @@ public class UIManager : MonoBehaviour
 
     public void NextRound(int round)
     {
-        Debug.Log(round);
         roundText.text = "Round: " + round;
+    }
+
+    public void RemainingEnemies(int count)
+    {
+        remainingText.text = "Remaining: " + count;
     }
 }

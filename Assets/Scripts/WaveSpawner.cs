@@ -12,28 +12,15 @@ public class WaveSpawner : MonoBehaviour
     public float roundDelay = 5f;
     private int enemyCount = 0;
 
-    private void Start()
-    {
-        SpawnNewWave();
-    }
-
     public void SpawnNewWave()
     {
         enemyCount += 3;
         StartCoroutine(SpawnWave());
     }
 
-    private void Update()
-    {
-        if(GameManager.instance.EnemyCount() == 0)
-        {
-            SpawnNewWave();
-        }
-    }
-
     private IEnumerator SpawnWave()
     {
-        //yield return new WaitForSeconds(roundDelay);
+        UIManager.instance.RemainingEnemies(enemyCount);
 
         for (int i = 0; i < enemyCount; i++)
         {

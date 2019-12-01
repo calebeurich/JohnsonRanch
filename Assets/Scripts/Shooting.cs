@@ -25,9 +25,6 @@ public class Shooting : MonoBehaviour
                 float distance = hit.distance; // How far out?
                 Vector3 location = hit.point; // Where did I make impact?
                 GameObject targetGameObject = hit.collider.gameObject; // What's the GameObject?
-
-                Debug.Log(targetGameObject);
-
                 if (targetGameObject.tag == "Enemy")
                 {
                     //also check if its too far away?
