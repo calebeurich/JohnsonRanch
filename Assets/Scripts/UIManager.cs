@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
 
     public TextMeshProUGUI roundText;
     public TextMeshProUGUI remainingText;
+    public TextMeshProUGUI scoreText;
     public GameObject reloadText;
 
     //instance variable
@@ -38,5 +39,10 @@ public class UIManager : MonoBehaviour
     public void SetReloadTextActive(bool isActive)
     {
         reloadText.SetActive(isActive);
+    }
+
+    public void UpdateScore(int score)
+    {
+        scoreText.text = "Score: " + score;
     }
 }

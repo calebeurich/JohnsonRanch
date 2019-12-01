@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private int currentRound = 0;
     private int timeBetweenRounds = 5;
     private List<GameObject> enemyPrefabs;
+    private int score = 0;
 
     //instance variable
     private void Awake()
@@ -61,6 +62,8 @@ public class GameManager : MonoBehaviour
         enemyPrefabs.Remove(deleteEnemy);
         UIManager.instance.RemainingEnemies(enemyPrefabs.Count);
         Destroy(deleteEnemy);
+        score++;
+        UIManager.instance.UpdateScore(score);
     }
 
     public int EnemyCount()
