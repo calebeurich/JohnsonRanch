@@ -6735,36 +6735,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5703442312199091171, guid: 2839c32bc6f454f12ac9431e7ec3f9be,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.49969876
-      objectReference: {fileID: 0}
-    - target: {fileID: 5703442312199091171, guid: 2839c32bc6f454f12ac9431e7ec3f9be,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.50030106
-      objectReference: {fileID: 0}
-    - target: {fileID: 5703442312199091171, guid: 2839c32bc6f454f12ac9431e7ec3f9be,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.50030106
-      objectReference: {fileID: 0}
-    - target: {fileID: 5703442312199091171, guid: 2839c32bc6f454f12ac9431e7ec3f9be,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.49969876
-      objectReference: {fileID: 0}
-    - target: {fileID: 5703442312199091171, guid: 2839c32bc6f454f12ac9431e7ec3f9be,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 93.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5703442312199091171, guid: 2839c32bc6f454f12ac9431e7ec3f9be,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
-      objectReference: {fileID: 0}
     - target: {fileID: 3688703970807178601, guid: 2839c32bc6f454f12ac9431e7ec3f9be,
         type: 3}
       propertyPath: bulletImages.Array.data[0]
