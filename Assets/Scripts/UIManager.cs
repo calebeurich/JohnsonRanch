@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
 
     public TextMeshProUGUI roundText;
     public TextMeshProUGUI remainingText;
+    public GameObject reloadText;
 
     //instance variable
     private void Awake()
@@ -32,5 +33,10 @@ public class UIManager : MonoBehaviour
     public void RemainingEnemies(int count)
     {
         remainingText.text = "Remaining: " + count;
+    }
+
+    public void SetReloadTextActive(bool isActive)
+    {
+        reloadText.SetActive(isActive);
     }
 }
