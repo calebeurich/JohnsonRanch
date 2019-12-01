@@ -12,6 +12,11 @@ public class WaveSpawner : MonoBehaviour
     public float roundDelay = 5f;
     private int enemyCount = 0;
 
+    private void Start()
+    {
+        SpawnNewWave();
+    }
+
     public void SpawnNewWave()
     {
         enemyCount += 3;
@@ -40,5 +45,7 @@ public class WaveSpawner : MonoBehaviour
 
             yield return new WaitForSeconds(spawnRate);
         }
+
+        GameManager.instance.isSpawning = false;
     }
 }

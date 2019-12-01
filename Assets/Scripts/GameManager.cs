@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance { get { return _instance; } }
 
     public WaveSpawner waveSpawner;
+    public bool isSpawning = true;
     private int currentRound = 0;
     private List<GameObject> enemyPrefabs;
 
@@ -28,10 +29,12 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(EnemyCount() == 0)
+        if(EnemyCount() == 0 && !isSpawning)
         {
+            isSpawning = true;
             waveSpawner.SpawnNewWave();
             currentRound++;
+            Debug.Log("New wave");
             UIManager.instance.NextRound(currentRound);
         }
     }
@@ -39,10 +42,12 @@ public class GameManager : MonoBehaviour
     public void AddEnemy(GameObject newEnemy)
     {
         enemyPrefabs.Add(newEnemy);
+        Debug.Log("Add enemy");
     }
 
     public void RemoveEnemy(GameObject deleteEnemy)
     {
+        Debug.Log("Remove enemy");
         enemyPrefabs.Remove(deleteEnemy);
         Destroy(deleteEnemy);
     }

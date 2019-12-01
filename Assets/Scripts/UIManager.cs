@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
 
     public void NextRound(int round)
     {
+        Debug.Log(round);
         roundText.text = "Round: " + round;
     }
 }

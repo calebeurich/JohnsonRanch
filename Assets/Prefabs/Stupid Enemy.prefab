@@ -798,6 +798,8 @@ GameObject:
   - component: {fileID: 848370101335932172}
   - component: {fileID: 6176022537530846702}
   - component: {fileID: 2055102482468769245}
+  - component: {fileID: 4143175122206026006}
+  - component: {fileID: 2215839391009736348}
   m_Layer: 0
   m_Name: Stupid Enemy
   m_TagString: Enemy
@@ -876,8 +878,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 1.75, z: 0.43}
-  m_Center: {x: 0, y: 0.89, z: 0}
+  m_Size: {x: 0.7853696, y: 0.7462864, z: 0.2980837}
+  m_Center: {x: -0.0089027295, y: 1.0365796, z: -8.295271e-11}
 --- !u!54 &2055102482468769245
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -894,6 +896,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &4143175122206026006
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6175521620644876812}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6314051, y: 0.47897196, z: 0.5}
+  m_Center: {x: -0.018396646, y: 1.6494861, z: -2.9592545e-10}
+--- !u!65 &2215839391009736348
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6175521620644876812}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5262816, y: 0.69743013, z: 0.7}
+  m_Center: {x: 0.028909834, y: 0.3137151, z: 2.4502303e-10}
 --- !u!1 &6175529028209764870
 GameObject:
   m_ObjectHideFlags: 0
