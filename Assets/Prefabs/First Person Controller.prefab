@@ -5169,6 +5169,10 @@ MonoBehaviour:
   bulletImages:
   - {fileID: 0}
   - {fileID: 0}
+  canShoot: 1
+  delayInSeconds: 2
+  RDelayInSeconds: 4
+  notReloading: 1
 --- !u!1 &3688703971309945977
 GameObject:
   m_ObjectHideFlags: 0
@@ -5298,10 +5302,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3688703970463378536}
     m_Modifications:
-    - target: {fileID: 1781612473511560, guid: fbfd54242e00d0347a6d5755e7e9fca1, type: 3}
-      propertyPath: m_Name
-      value: gun1
-      objectReference: {fileID: 0}
     - target: {fileID: 4755581203415636, guid: fbfd54242e00d0347a6d5755e7e9fca1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.332
@@ -5345,6 +5345,10 @@ PrefabInstance:
     - target: {fileID: 4755581203415636, guid: fbfd54242e00d0347a6d5755e7e9fca1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 93.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781612473511560, guid: fbfd54242e00d0347a6d5755e7e9fca1, type: 3}
+      propertyPath: m_Name
+      value: gun1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbfd54242e00d0347a6d5755e7e9fca1, type: 3}

@@ -13,6 +13,10 @@ public class Shooting : MonoBehaviour
     public Image[] bulletImages;
     private int remainingBullets;
     private int totalBullets;
+    public bool canShoot = true;
+    public float delayInSeconds;
+    public float RDelayInSeconds;
+    public bool notReloading = true;
 
     private void Start()
     {
@@ -22,9 +26,10 @@ public class Shooting : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && remainingBullets > 0)
+        if (Input.GetMouseButtonDown(0) && remainingBullets > 0 && canShoot && notReloading)
         {
             ShootGun();
+            StartCoroutine(ShootDelay());
             RaycastHit hit;
             if (Physics.Raycast(firePoint.transform.position, firePoint.transform.forward, out hit))
             {
@@ -55,8 +60,12 @@ public class Shooting : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R) && remainingBullets != totalBullets)
         {
             ReloadGun();
+            StartCoroutine(ReloadDelay());
+
         }
     }
+
+    
 
     private void ShootGun()
     {
@@ -65,6 +74,7 @@ public class Shooting : MonoBehaviour
         Color dischargedColor = bulletImages[remainingBullets].color;
         dischargedColor.a = 0.12f;
         bulletImages[remainingBullets].color = dischargedColor;
+        canShoot = false;
     }
 
     private void ReloadGun()
@@ -75,5 +85,19 @@ public class Shooting : MonoBehaviour
         }
         remainingBullets = totalBullets;
         UIManager.instance.SetReloadTextActive(false);
+        notReloading = true;
     }
+
+    IEnumerator ShootDelay()
+    {
+        yield return new WaitForSeconds(delayInSeconds);
+        canShoot = true;
+    }
+    IEnumerator ReloadDelay()
+    {
+        yield return new WaitForSeconds(RDelayInSeconds);
+        notReloading = true;
+    }
+
 }
+
