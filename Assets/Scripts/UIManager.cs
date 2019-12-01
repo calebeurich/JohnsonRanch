@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI roundText;
     public TextMeshProUGUI remainingText;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI livesText;
     public GameObject reloadText;
 
     //instance variable
@@ -44,5 +45,10 @@ public class UIManager : MonoBehaviour
     public void UpdateScore(int score)
     {
         scoreText.text = "Score: " + score;
+    }
+
+    public void SetLives(int lives)
+    {
+        livesText.text = "Lives: " + lives;
     }
 }

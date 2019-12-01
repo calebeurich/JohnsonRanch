@@ -8,7 +8,6 @@ public class DumbZombieBehaviour : MonoBehaviour
 {
     public Transform target;
     private float speed = 3f;
-    public TextMeshProUGUI remainingText;
     public int lives = 3;
 
     void Update()
@@ -21,9 +20,9 @@ public class DumbZombieBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            
-            lives = lives - 1;
-            Debug.Log(lives);
+            lives--;
+            UIManager.instance.SetLives(lives);
+
             if (lives == 0)
             {
                 Debug.Log("YOUDIE");
