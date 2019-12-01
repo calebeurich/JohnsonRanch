@@ -1,21 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class Shooting : MonoBehaviour
 {
     public GameObject firePoint;
     public GameObject bangParticles;
+    public ParticleSystem muzzleFlash;
+    public float range = 500f;
+    public Image[] bulletImages;
+    private int remainingBullets;
+    private int totalBullets;
+
+    private void Start()
+    {
+        totalBullets = bulletImages.Length;
+        remainingBullets = totalBullets;
+    }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && remainingBullets > 0)
         {
+            ShootGun();
             RaycastHit hit;
             if (Physics.Raycast(firePoint.transform.position, firePoint.transform.forward, out hit))
             {
-                Vector3 forward = firePoint.transform.TransformDirection(Vector3.forward) * 10;
+                Vector3 forward = firePoint.transform.TransformDirection(Vector3.forward) * range;
                 Debug.DrawRay(firePoint.transform.position, forward, Color.green);
                 //add shooting affect
                 Collider target = hit.collider; // What did I hit?
@@ -26,12 +39,41 @@ public class Shooting : MonoBehaviour
                 {
                     //also check if its too far away?
                     Instantiate(bangParticles, location, Quaternion.identity);
-                    GameManager.instance.RemoveEnemy(target.gameObject);
+                    GameManager.instance.RemoveEnemy(targetGameObject);
                     //kill the enemy anamation
                 }
             }
 
 
         }
+
+        if(remainingBullets == 0)
+        {
+            UIManager.instance.SetReloadTextActive(true);
+        }
+
+        if(Input.GetKeyDown(KeyCode.R) && remainingBullets != totalBullets)
+        {
+            ReloadGun();
+        }
+    }
+
+    private void ShootGun()
+    {
+        muzzleFlash.Play();
+        remainingBullets--;
+        Color dischargedColor = bulletImages[remainingBullets].color;
+        dischargedColor.a = 0.12f;
+        bulletImages[remainingBullets].color = dischargedColor;
+    }
+
+    private void ReloadGun()
+    {
+        foreach(Image bullet in bulletImages)
+        {
+            bullet.color = Color.white;
+        }
+        remainingBullets = totalBullets;
+        UIManager.instance.SetReloadTextActive(false);
     }
 }
