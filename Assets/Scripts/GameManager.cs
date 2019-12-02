@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public WaveSpawner waveSpawner;
     public bool isSpawning = true;
     private int currentRound = 0;
-    private int timeBetweenRounds = 5;
+    public int timeBetweenRounds = 5;
     private List<GameObject> enemyPrefabs;
     private int score = 0;
 

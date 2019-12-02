@@ -8,8 +8,6 @@ public class WaveSpawner : MonoBehaviour
     public Transform[] spawnLocations;
     public Transform playerTransform;
     public float spawnRate = 1;
-    public int timeBetweenWaves = 15;
-    public float roundDelay = 5f;
     private int enemyCount = 0;
 
     public void SpawnNewWave()

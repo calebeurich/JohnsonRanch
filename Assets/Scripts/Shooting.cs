@@ -6,14 +6,12 @@ using UnityEngine.UI;
 
 public class Shooting : MonoBehaviour
 {
-    public GameObject firePoint;
     public GameObject bangParticles;
-    public ParticleSystem muzzleFlash;
+    public Weapon selectedWeapon;
     public Image[] bulletImages;
     public bool canShoot = true;
     public float shotDelay = 0.5f;
     public bool reloading = false;
-    public Weapon selectedWeapon;
 
     private void Update()
     {
@@ -22,25 +20,32 @@ public class Shooting : MonoBehaviour
             ShootGun();
             StartCoroutine(ShootDelay());
             RaycastHit hit;
-            if (Physics.Raycast(firePoint.transform.position, firePoint.transform.forward, out hit))
+            if (Physics.Raycast(selectedWeapon.firePoint.transform.position, selectedWeapon.firePoint.transform.forward, out hit))
             {
-                Vector3 forward = firePoint.transform.TransformDirection(Vector3.forward) * selectedWeapon.range;
-                Debug.DrawRay(firePoint.transform.position, forward, Color.green);
+                Vector3 forward = selectedWeapon.firePoint.transform.TransformDirection(Vector3.forward) * selectedWeapon.range;
+                Debug.DrawRay(selectedWeapon.firePoint.transform.position, forward, Color.green);
                 //add shooting affect
                 Collider target = hit.collider; // What did I hit?
                 float distance = hit.distance; // How far out?
                 Vector3 location = hit.point; // Where did I make impact?
                 GameObject targetGameObject = hit.collider.gameObject; // What's the GameObject?
+
                 if (targetGameObject.tag == "Enemy")
                 {
-                    //also check if its too far away?
                     Instantiate(bangParticles, location, Quaternion.identity);
                     GameManager.instance.RemoveEnemy(targetGameObject);
-                    //kill the enemy anamation
+                } else if(targetGameObject.tag == "Weapon")
+                {
+                    //Todo weapon pickups:
+
+                    //This raycasting would need to be moved to a seperate script and would call this shooting script,
+                    //and a selected gun handler script (not created yet) that would handle the following:
+                        //Position the newly selected weapon properly (so that it shoots where the cursor is, difficult because the gun is offset from center of screen)
+                        //Drop old weapon
+                        //Change the UI to display the right number of bullets
+                        //Assign to the shooting script the newly selected weapon (class I already created)
                 }
             }
-
-
         }
 
         if(selectedWeapon.remainingBullets == 0)
@@ -58,7 +63,7 @@ public class Shooting : MonoBehaviour
 
     private void ShootGun()
     {
-        muzzleFlash.Play();
+        selectedWeapon.muzzleFlash.Play();
         selectedWeapon.remainingBullets--;
         Color dischargedColor = bulletImages[selectedWeapon.remainingBullets].color;
         dischargedColor.a = 0.12f;
@@ -83,6 +88,11 @@ public class Shooting : MonoBehaviour
     {
         yield return new WaitForSeconds(shotDelay);
         canShoot = true;
+    }
+
+    public void SelectWeapon(Weapon pickedUpWeapon)
+    {
+        selectedWeapon = pickedUpWeapon;
     }
 }
 

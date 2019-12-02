@@ -9,6 +9,8 @@ public class Weapon : MonoBehaviour
     public int remainingBullets;
     public float reloadRate;
     public float range;
+    public GameObject firePoint;
+    public ParticleSystem muzzleFlash;
 
     private void Start()
     {
