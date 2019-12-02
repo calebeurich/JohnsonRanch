@@ -85,7 +85,7 @@ public class Shooting : MonoBehaviour
         }
         remainingBullets = totalBullets;
         UIManager.instance.SetReloadTextActive(false);
-        notReloading = true;
+        notReloading = false;
     }
 
     IEnumerator ShootDelay()
