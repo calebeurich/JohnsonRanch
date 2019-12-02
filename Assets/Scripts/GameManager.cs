@@ -46,7 +46,6 @@ public class GameManager : MonoBehaviour
     {
         isSpawning = true;
         yield return new WaitForSeconds(timeBetweenRounds);
-        Debug.Log("New wave (" + currentRound + ")");
         waveSpawner.SpawnNewWave();
         currentRound++;
         UIManager.instance.NextRound(currentRound);
