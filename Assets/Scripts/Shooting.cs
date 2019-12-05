@@ -6,62 +6,56 @@ using UnityEngine.UI;
 
 public class Shooting : MonoBehaviour
 {
-    public GameObject firePoint;
     public GameObject bangParticles;
-    public ParticleSystem muzzleFlash;
-    public float range = 500f;
+    public Weapon selectedWeapon;
     public Image[] bulletImages;
-    private int remainingBullets;
-    private int totalBullets;
     public bool canShoot = true;
-    public float delayInSeconds;
-    public float RDelayInSeconds;
-    public bool notReloading = true;
-
-    private void Start()
-    {
-        totalBullets = bulletImages.Length;
-        remainingBullets = totalBullets;
-    }
+    public float shotDelay = 0.5f;
+    public bool reloading = false;
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && remainingBullets > 0 && canShoot && notReloading)
+        if (Input.GetMouseButtonDown(0) && selectedWeapon.remainingBullets > 0 && canShoot && !reloading)
         {
             ShootGun();
             StartCoroutine(ShootDelay());
             RaycastHit hit;
-            if (Physics.Raycast(firePoint.transform.position, firePoint.transform.forward, out hit))
+            if (Physics.Raycast(selectedWeapon.firePoint.transform.position, selectedWeapon.firePoint.transform.forward, out hit))
             {
-                Vector3 forward = firePoint.transform.TransformDirection(Vector3.forward) * range;
-                Debug.DrawRay(firePoint.transform.position, forward, Color.green);
+                Vector3 forward = selectedWeapon.firePoint.transform.TransformDirection(Vector3.forward) * selectedWeapon.range;
+                Debug.DrawRay(selectedWeapon.firePoint.transform.position, forward, Color.green);
                 //add shooting affect
                 Collider target = hit.collider; // What did I hit?
                 float distance = hit.distance; // How far out?
                 Vector3 location = hit.point; // Where did I make impact?
                 GameObject targetGameObject = hit.collider.gameObject; // What's the GameObject?
+
                 if (targetGameObject.tag == "Enemy")
                 {
-                    //also check if its too far away?
                     Instantiate(bangParticles, location, Quaternion.identity);
                     GameManager.instance.RemoveEnemy(targetGameObject);
-                    //kill the enemy anamation
+                } else if(targetGameObject.tag == "Weapon")
+                {
+                    //Todo weapon pickups:
+
+                    //This raycasting would need to be moved to a seperate script and would call this shooting script,
+                    //and a selected gun handler script (not created yet) that would handle the following:
+                        //Position the newly selected weapon properly (so that it shoots where the cursor is, difficult because the gun is offset from center of screen)
+                        //Drop old weapon
+                        //Change the UI to display the right number of bullets
+                        //Assign to the shooting script the newly selected weapon (class I already created)
                 }
             }
-
-
         }
 
-        if(remainingBullets == 0)
+        if(selectedWeapon.remainingBullets == 0)
         {
             UIManager.instance.SetReloadTextActive(true);
         }
 
-        if(Input.GetKeyDown(KeyCode.R) && remainingBullets != totalBullets)
+        if(Input.GetKeyDown(KeyCode.R) && selectedWeapon.remainingBullets != selectedWeapon.clipSize)
         {
-            ReloadGun();
-            StartCoroutine(ReloadDelay());
-
+            StartCoroutine(ReloadGun());
         }
     }
 
@@ -69,35 +63,36 @@ public class Shooting : MonoBehaviour
 
     private void ShootGun()
     {
-        muzzleFlash.Play();
-        remainingBullets--;
-        Color dischargedColor = bulletImages[remainingBullets].color;
+        selectedWeapon.muzzleFlash.Play();
+        selectedWeapon.remainingBullets--;
+        Color dischargedColor = bulletImages[selectedWeapon.remainingBullets].color;
         dischargedColor.a = 0.12f;
-        bulletImages[remainingBullets].color = dischargedColor;
+        bulletImages[selectedWeapon.remainingBullets].color = dischargedColor;
         canShoot = false;
     }
 
-    private void ReloadGun()
+    private IEnumerator ReloadGun()
     {
-        foreach(Image bullet in bulletImages)
+        reloading = true;
+        foreach (Image bullet in bulletImages)
         {
+            yield return new WaitForSeconds(selectedWeapon.reloadRate);
             bullet.color = Color.white;
         }
-        remainingBullets = totalBullets;
+        selectedWeapon.remainingBullets = selectedWeapon.clipSize;
         UIManager.instance.SetReloadTextActive(false);
-        notReloading = false;
+        reloading = false;
     }
 
     IEnumerator ShootDelay()
     {
-        yield return new WaitForSeconds(delayInSeconds);
+        yield return new WaitForSeconds(shotDelay);
         canShoot = true;
     }
-    IEnumerator ReloadDelay()
-    {
-        yield return new WaitForSeconds(RDelayInSeconds);
-        notReloading = true;
-    }
 
+    public void SelectWeapon(Weapon pickedUpWeapon)
+    {
+        selectedWeapon = pickedUpWeapon;
+    }
 }
 
