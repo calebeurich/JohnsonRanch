@@ -9,11 +9,11 @@ public class DumbZombieBehaviour : MonoBehaviour
     public Transform target;
     private float speed = 3f;
     public int lives = 3;
+    public GameObject gameoverPanel;
 
     void Update()
     {
-		float step = speed * Time.deltaTime;
-		transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+		transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         transform.LookAt(target);
 	}
     private void OnCollisionEnter(Collision collision)
@@ -25,7 +25,7 @@ public class DumbZombieBehaviour : MonoBehaviour
 
             if (lives == 0)
             {
-                Debug.Log("YOUDIE");
+                UIManager.instance.GameOver();
             }
         }
     }

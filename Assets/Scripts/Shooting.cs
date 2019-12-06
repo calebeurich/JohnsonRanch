@@ -16,47 +16,51 @@ public class Shooting : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && selectedWeapon.remainingBullets > 0 && canShoot && !reloading)
+        if(Time.timeScale > 0)
         {
-            ShootGun();
-            StartCoroutine(ShootDelay());
-            RaycastHit hit;
-            if (Physics.Raycast(selectedWeapon.firePoint.transform.position, selectedWeapon.firePoint.transform.forward, out hit))
+            if (Input.GetMouseButtonDown(0) && selectedWeapon.remainingBullets > 0 && canShoot && !reloading)
             {
-                Vector3 forward = selectedWeapon.firePoint.transform.TransformDirection(Vector3.forward) * selectedWeapon.range;
-                Debug.DrawRay(selectedWeapon.firePoint.transform.position, forward, Color.green);
-                //add shooting affect
-                Collider target = hit.collider; // What did I hit?
-                float distance = hit.distance; // How far out?
-                Vector3 location = hit.point; // Where did I make impact?
-                GameObject targetGameObject = hit.collider.gameObject; // What's the GameObject?
-
-                if (targetGameObject.tag == "Enemy")
+                ShootGun();
+                StartCoroutine(ShootDelay());
+                RaycastHit hit;
+                if (Physics.Raycast(selectedWeapon.firePoint.transform.position, selectedWeapon.firePoint.transform.forward, out hit))
                 {
-                    Instantiate(bangParticles, location, Quaternion.identity);
-                    GameManager.instance.RemoveEnemy(targetGameObject);
-                } else if(targetGameObject.tag == "Weapon")
-                {
-                    //Todo weapon pickups:
+                    Vector3 forward = selectedWeapon.firePoint.transform.TransformDirection(Vector3.forward) * selectedWeapon.range;
+                    Debug.DrawRay(selectedWeapon.firePoint.transform.position, forward, Color.green);
+                    //add shooting affect
+                    Collider target = hit.collider; // What did I hit?
+                    float distance = hit.distance; // How far out?
+                    Vector3 location = hit.point; // Where did I make impact?
+                    GameObject targetGameObject = hit.collider.gameObject; // What's the GameObject?
 
-                    //This raycasting would need to be moved to a seperate script and would call this shooting script,
-                    //and a selected gun handler script (not created yet) that would handle the following:
+                    if (targetGameObject.tag == "Enemy")
+                    {
+                        Instantiate(bangParticles, location, Quaternion.identity);
+                        GameManager.instance.RemoveEnemy(targetGameObject);
+                    }
+                    else if (targetGameObject.tag == "Weapon")
+                    {
+                        //Todo weapon pickups:
+
+                        //This raycasting would need to be moved to a seperate script and would call this shooting script,
+                        //and a selected gun handler script (not created yet) that would handle the following:
                         //Position the newly selected weapon properly (so that it shoots where the cursor is, difficult because the gun is offset from center of screen)
                         //Drop old weapon
                         //Change the UI to display the right number of bullets
                         //Assign to the shooting script the newly selected weapon (class I already created)
+                    }
                 }
             }
-        }
 
-        if(selectedWeapon.remainingBullets == 0)
-        {
-            UIManager.instance.SetReloadTextActive(true);
-        }
+            if (selectedWeapon.remainingBullets == 0)
+            {
+                UIManager.instance.SetReloadTextActive(true);
+            }
 
-        if(Input.GetKeyDown(KeyCode.R) && selectedWeapon.remainingBullets != selectedWeapon.clipSize)
-        {
-            StartCoroutine(ReloadGun());
+            if (Input.GetKeyDown(KeyCode.R) && selectedWeapon.remainingBullets != selectedWeapon.clipSize)
+            {
+                StartCoroutine(ReloadGun());
+            }
         }
     }
 

@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI livesText;
     public GameObject reloadText;
+    public GameObject gameOverPannel;
 
     //instance variable
     private void Awake()
@@ -50,5 +51,13 @@ public class UIManager : MonoBehaviour
     public void SetLives(int lives)
     {
         livesText.text = "Lives: " + lives;
+    }
+
+    public void GameOver()
+    {
+        gameOverPannel.SetActive(true);
+        Time.timeScale = 0f;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }
