@@ -12,6 +12,7 @@ public class Shooting : MonoBehaviour
     public bool canShoot = true;
     public float shotDelay = 0.5f;
     public bool reloading = false;
+    public AudioSource gunNoise;
 
     private void Update()
     {
@@ -63,6 +64,7 @@ public class Shooting : MonoBehaviour
 
     private void ShootGun()
     {
+        gunNoise.Play();
         selectedWeapon.muzzleFlash.Play();
         selectedWeapon.remainingBullets--;
         Color dischargedColor = bulletImages[selectedWeapon.remainingBullets].color;
