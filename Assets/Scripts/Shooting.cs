@@ -38,17 +38,6 @@ public class Shooting : MonoBehaviour
                         Instantiate(bangParticles, location, Quaternion.identity);
                         GameManager.instance.RemoveEnemy(targetGameObject);
                     }
-                    else if (targetGameObject.tag == "Weapon")
-                    {
-                        //Todo weapon pickups:
-
-                        //This raycasting would need to be moved to a seperate script and would call this shooting script,
-                        //and a selected gun handler script (not created yet) that would handle the following:
-                        //Position the newly selected weapon properly (so that it shoots where the cursor is, difficult because the gun is offset from center of screen)
-                        //Drop old weapon
-                        //Change the UI to display the right number of bullets
-                        //Assign to the shooting script the newly selected weapon (class I already created)
-                    }
                 }
             }
 
