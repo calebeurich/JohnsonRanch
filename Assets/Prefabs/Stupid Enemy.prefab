@@ -867,7 +867,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 3688703970463378542, guid: 2839c32bc6f454f12ac9431e7ec3f9be, type: 3}
-  lives: 3
+  gameoverPanel: {fileID: 0}
+  range: 3
+  hitRate: 0.75
 --- !u!65 &6176022537530846702
 BoxCollider:
   m_ObjectHideFlags: 0

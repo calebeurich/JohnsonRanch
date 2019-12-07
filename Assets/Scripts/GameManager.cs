@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public bool isSpawning = true;
     private int currentRound = 0;
     public int timeBetweenRounds = 5;
+    public bool isAlive = true;
     private List<GameObject> enemyPrefabs;
     private int score = 0;
     private int lives = 3;
@@ -38,8 +39,9 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (lives == 0)
+        if (lives == 0 && isAlive)
         {
+            isAlive = false;
             UIManager.instance.GameOver();
         }
         if (EnemyCount() == 0 && !isSpawning)

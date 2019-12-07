@@ -8,18 +8,14 @@ public class GameoverButton : MonoBehaviour
 {
     public Button mainMenuButton;
     public Button restartButton;
-    public string menu;
-    public string restart;
 
     public void MainMenu()
     {
-        SceneManager.LoadScene(menu);
-        Debug.Log("MM");
+        SceneManager.LoadScene(0);
     }
 
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Debug.Log("Restart");
     }
 }

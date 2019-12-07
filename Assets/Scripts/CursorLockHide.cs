@@ -14,16 +14,19 @@ public class CursorLockHide : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(GameManager.instance.isAlive)
         {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
 
-        if(Input.GetMouseButtonDown(0))
-        {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            if (Input.GetMouseButtonDown(0))
+            {
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
         }
     }
 }
