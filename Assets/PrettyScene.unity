@@ -8529,6 +8529,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1702628041}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1702628043 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3688703970463543368, guid: 2839c32bc6f454f12ac9431e7ec3f9be,
+    type: 3}
+  m_PrefabInstance: {fileID: 1702628041}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1702628044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702628043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d2226fb3559648539f9eec0ceaf4cbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Menu Scene
+  black: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1001 &1720045664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9831,7 +9852,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.977
       inSlope: 0
       outSlope: 0
       tangentMode: 0

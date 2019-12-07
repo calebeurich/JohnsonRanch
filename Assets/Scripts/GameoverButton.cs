@@ -8,10 +8,12 @@ public class GameoverButton : MonoBehaviour
 {
     public Button mainMenuButton;
     public Button restartButton;
+    public string menu;
+    public string restart;
 
     public void MainMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(menu);
         Debug.Log("MM");
     }
 
