@@ -34,7 +34,7 @@ public class WaveSpawner : MonoBehaviour
             }
             else
             {
-                newEnemy.GetComponent<DumbZombieBehaviour>().target = playerTransform;
+                newEnemy.GetComponent<ZombieBehaviour>().target = playerTransform;
             }
             
             GameManager.instance.AddEnemy(newEnemy);

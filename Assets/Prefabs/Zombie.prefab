@@ -795,11 +795,11 @@ GameObject:
   - component: {fileID: 6171239477051577358}
   - component: {fileID: 6116321608531714806}
   - component: {fileID: 6062662219045497240}
-  - component: {fileID: 848370101335932172}
   - component: {fileID: 6176022537530846702}
   - component: {fileID: 2055102482468769245}
   - component: {fileID: 4143175122206026006}
   - component: {fileID: 2215839391009736348}
+  - component: {fileID: -2307169742732282706}
   m_Layer: 0
   m_Name: Stupid Enemy
   m_TagString: Enemy
@@ -854,22 +854,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ca642625b449a4ca8b7963b51f6aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &848370101335932172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6175521620644876812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36ad3e05a6ac74661bbd9eae11ea5c0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 3688703970463378542, guid: 2839c32bc6f454f12ac9431e7ec3f9be, type: 3}
-  gameoverPanel: {fileID: 0}
-  range: 3
-  hitRate: 0.75
 --- !u!65 &6176022537530846702
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -925,6 +909,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5262816, y: 0.69743013, z: 0.7}
   m_Center: {x: 0.028909834, y: 0.3137151, z: 2.4502303e-10}
+--- !u!114 &-2307169742732282706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6175521620644876812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 272b6651362bd44d6b11e7d9c23c9bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  gameoverPanel: {fileID: 0}
+  range: 3
+  hitRate: 1
 --- !u!1 &6175529028209764870
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,10 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
-using TMPro;
 
-public class DumbZombieBehaviour : MonoBehaviour
+public class ZombieBehaviour : MonoBehaviour
 {
     public Transform target;
     private float speed = 3f;
@@ -19,8 +17,8 @@ public class DumbZombieBehaviour : MonoBehaviour
 
     void Update()
     {
-		transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-        transform.LookAt(target); 
+        transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        transform.LookAt(target);
     }
 
     private IEnumerator CheckHit()
