@@ -55,9 +55,18 @@ public class UIManager : MonoBehaviour
 
     public void GameOver()
     {
+        Debug.Log(gameOverPannel);
         gameOverPannel.SetActive(true);
         Time.timeScale = 0f;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+    }
+    public void GameStart()
+    {
+        Debug.Log(gameOverPannel);
+        gameOverPannel.SetActive(false);
+        Time.timeScale = 1f;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

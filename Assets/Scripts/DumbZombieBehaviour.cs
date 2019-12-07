@@ -8,7 +8,6 @@ public class DumbZombieBehaviour : MonoBehaviour
 {
     public Transform target;
     private float speed = 3f;
-    public int lives = 3;
     public GameObject gameoverPanel;
 
     void Update()
@@ -20,13 +19,8 @@ public class DumbZombieBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            lives--;
-            UIManager.instance.SetLives(lives);
+            GameManager.instance.DecreaseLives();
 
-            if (lives == 0)
-            {
-                UIManager.instance.GameOver();
-            }
         }
     }
 }

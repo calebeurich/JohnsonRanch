@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public int timeBetweenRounds = 5;
     private List<GameObject> enemyPrefabs;
     private int score = 0;
+    private int lives = 3;
 
     //instance variable
     private void Awake()
@@ -31,12 +32,17 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        UIManager.instance.GameStart();
         StartCoroutine(CallSpawnWave());
     }
 
     private void Update()
     {
-        if(EnemyCount() == 0 && !isSpawning)
+        if (lives == 0)
+        {
+            UIManager.instance.GameOver();
+        }
+        if (EnemyCount() == 0 && !isSpawning)
         {
             StartCoroutine(CallSpawnWave());
         }
@@ -70,4 +76,10 @@ public class GameManager : MonoBehaviour
         return enemyPrefabs.Count;
 
     }
+    public void DecreaseLives()
+    {
+        lives--;
+        UIManager.instance.SetLives(lives);
+    }
+
 }

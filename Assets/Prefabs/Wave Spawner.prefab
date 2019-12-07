@@ -129,10 +129,9 @@ MonoBehaviour:
   - {fileID: 220894172539165491}
   playerTransform: {fileID: 3688703970463378542, guid: 2839c32bc6f454f12ac9431e7ec3f9be,
     type: 3}
-  spawnRate: 0.5
-  maxRandom: 3
   houseTransform: {fileID: 1166333893758216320, guid: 86814bd90563744ecac2dd24a5f4f79e,
     type: 3}
+  spawnRate: 0.5
 --- !u!1 &220894171565852732
 GameObject:
   m_ObjectHideFlags: 0
