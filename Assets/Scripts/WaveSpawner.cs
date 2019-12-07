@@ -12,8 +12,8 @@ public class WaveSpawner : MonoBehaviour
     private int enemyCount = 0;
 
     public void SpawnNewWave()
-    {
-        enemyCount += 3;
+    { 
+        enemyCount += Random.Range(3,7);
         StartCoroutine(SpawnWave());
     }
 
